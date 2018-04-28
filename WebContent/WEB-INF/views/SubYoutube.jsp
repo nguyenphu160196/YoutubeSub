@@ -6,12 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./views/SubYoutube_files/youtubeIt.css">
-<link href="./views/SubYoutube_files/css.css" rel="stylesheet">
+<link rel="stylesheet" href="./JS&CSS/youtubeIt.css">
+<link href="./JS&CSS/css.css" rel="stylesheet">
 <link rel="stylesheet" media="all"
-	href="./views/SubYoutube_files/InstructureIcons-Solid.css">
-<!-- <link rel="stylesheet" media="all" href="./views/SubYoutube_files/variables.css">
-	<link rel="stylesheet" media="all" href="./views/SubYoutube_files/common.css"> -->
+	href="./JS&CSS/InstructureIcons-Solid.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -21,12 +19,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" id="www-widgetapi-script"
-	src="./views/SubYoutube_files/www-widgetapi.js" async=""></script>
+	src="./JS&CSS/SubYoutube_files/www-widgetapi.js" async=""></script>
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id"
-	content="878435691543-4s5pf2jvk3srq0ikp61mfmu235iqnnsk.apps.googleusercontent.com">
-
+	content="530785997801-2ro1qqmfpr4u419itskvereufo5d4431.apps.googleusercontent.com">
 <style type="text/css">
 .gradient {
 	-webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1),
@@ -57,17 +54,15 @@
 					</div>
 					<div class="col-xs-6" id="transcript">
 						<h4>Video Transcript</h4>
-						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA" style="border-style: groove;">
-
-						</div>
+						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA"
+							style="border-style: groove;"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="./views/SubYoutube_files/jquery.min.js"></script>
-	<script src="./views/SubYoutube_files/urlObject.js"></script>
-	<!-- <script src="./views/SubYoutube_files/youtube.js"></script> -->
+	<script src="./JS&CSS/jquery.min.js"></script>
+	<script src="./JS&CSS/urlObject.js"></script>
 
 	<script>
 	
@@ -531,16 +526,24 @@
 			window.location.href = "getsub?v=" + key2;
 		})
 		$("#logout").click(function(){
-			$.post("LogoutServlet").done(function(res){
-				if(res === "ok"){
-					window.location.href="getsub?v="+page_url.parameters.v;
-				}else{
-					
-				}
-			});
+			//console.log(window.location.href);
+			$.post("LogoutServlet").done(function(){
+				document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue="+window.location.href+"getsub?v="+page_url.parameters.v;
+				//window.location.href="getsub?v="+page_url.parameters.v;
+			}); 
 		});
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
+			var user = {
+				id : profile.getId(),
+				name: profile.getName(),
+				picture: profile.getImageUrl(),
+				email: profile.getEmail()
+			};
+			$.post("login", user).done(function(res){
+					//window.location.href="getsub?v="+page_url.parameters.v;
+				document.getElementById("userinfo").innerHTML = res;
+			});
 			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 			console.log('Name: ' + profile.getName());
 			console.log('Image URL: ' + profile.getImageUrl());
