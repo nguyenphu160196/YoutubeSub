@@ -147,6 +147,15 @@
 			console.log(key2);
 			window.location.href = "getsub?v=" + key2;
 		})
+		$("#logout").click(function(){
+			$.post("LogoutServlet").done(function(res){
+				if(res === "ok"){
+					window.location.href="home";
+				}else{
+					
+				}
+			});
+		});
 
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();

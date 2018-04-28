@@ -57,7 +57,7 @@
 					</div>
 					<div class="col-xs-6" id="transcript">
 						<h4>Video Transcript</h4>
-						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA">
+						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA" style="border-style: groove;">
 
 						</div>
 					</div>
@@ -325,7 +325,7 @@
                 captions = transcript.getElementsByTagName('text');
                 src = captions;
                 var srt_output="";
-                // srt_output += "<div><div><div class='btnSeek' style='text-align: center;' id='btnSeek' data-seek='0'>Play(<strong>00:00:00</strong>)</div></div></div>";
+                srt_output += "<div><div style='text-align: center;'><div class='btnSeek fa fa-play btn btn-default' style=' height: 35px' id='btnSeek' data-seek='0'>Play(<strong>00:00:00</strong>)</div></div></div>";
                 for (var i = 0, il = captions.length; i < il; i++) {
                     start =+ getStartTimeFromCaption(i);
 
@@ -530,7 +530,15 @@
 			console.log(key2);
 			window.location.href = "getsub?v=" + key2;
 		})
-
+		$("#logout").click(function(){
+			$.post("LogoutServlet").done(function(res){
+				if(res === "ok"){
+					window.location.href="getsub?v="+page_url.parameters.v;
+				}else{
+					
+				}
+			});
+		});
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
 			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
