@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns = { "/getsub"})
+@WebServlet("/getsub")
 public class SubYoutube extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,7 +23,7 @@ public class SubYoutube extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/SubYoutube.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/views/SubYoutube.jsp");
         
 	    dispatcher.forward(request, response);
 	}

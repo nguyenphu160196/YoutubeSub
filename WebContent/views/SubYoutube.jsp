@@ -1,72 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- saved from url=(0073)https://academicapps.temple.edu/youtubeIT/ytitexample2.html?v=xianU0IrxEk -->
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="./SubYoutube_files/youtubeIt.css">
-	<link href="./SubYoutube_files/css.css" rel="stylesheet">
-	<link rel="stylesheet" media="all" href="./SubYoutube_files/InstructureIcons-Solid.css">
-	<link rel="stylesheet" media="all" href="./SubYoutube_files/variables.css">
-	<link rel="stylesheet" media="all" href="./SubYoutube_files/common.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script type="text/javascript" id="www-widgetapi-script" src="./SubYoutube_files/www-widgetapi.js" async=""></script>
-	
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="878435691543-4s5pf2jvk3srq0ikp61mfmu235iqnnsk.apps.googleusercontent.com">
-	
-	<style type="text/css">
-	.gradient{
-		-webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 30%, rgba(0,0,0,1));
-		-webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 30%, rgba(0,0,0,1));
-		font-weight: 600;
-	}
-	</style>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./views/SubYoutube_files/youtubeIt.css">
+<link href="./views/SubYoutube_files/css.css" rel="stylesheet">
+<link rel="stylesheet" media="all"
+	href="./views/SubYoutube_files/InstructureIcons-Solid.css">
+<!-- <link rel="stylesheet" media="all" href="./views/SubYoutube_files/variables.css">
+	<link rel="stylesheet" media="all" href="./views/SubYoutube_files/common.css"> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" id="www-widgetapi-script"
+	src="./views/SubYoutube_files/www-widgetapi.js" async=""></script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+	content="878435691543-4s5pf2jvk3srq0ikp61mfmu235iqnnsk.apps.googleusercontent.com">
+
+<style type="text/css">
+.gradient {
+	-webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1),
+		rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1));
+	-webkit-mask-image: linear-gradient(top, rgba(0, 0, 0, 1),
+		rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1));
+	font-weight: 600;
+}
+</style>
 </head>
 <body>
-<div class="container-fluid" style="padding: 0px!important;; margin: 0px!important;">
+	<div class="container-fluid"
+		style="padding: 0px !important;; margin: 0px !important;">
 
-<jsp:include page="_header.jsp"></jsp:include>
+		<jsp:include page="_header_get.jsp"></jsp:include>
 
-<div class="ic-Layout-contentMain">
-    <div class="content-box" id="top_area">
-        <div class="grid-row">
-            <div class="col-xs-6">
-                <div class="video-responsive" id="youTubeVideo">
-                    <iframe class="iframe" id="" src="" width="560" height="400" allow="autoplay" allowfullscreen="true" __idm_id__="1016238081"></iframe>
-                </div>
-                <div style="text-align: center">
-                    <p id="note" style="">Ghi Chú</p>
-                </div>
-            </div>
-            <div class="col-xs-6" id="transcript">
-                <h4>Video Transcript</h4>
-                <div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA">
+		<div class="ic-Layout-contentMain" style="margin-top: 70px;">
+			<div class="content-box" id="top_area">
+				<div class="grid-row">
+					<div class="col-xs-6">
+						<div class="video-responsive" id="youTubeVideo">
+							<iframe class="iframe" id="" src="" width="560" height="400"
+								allow="autoplay" allowfullscreen="true" __idm_id__="1016238081"></iframe>
+						</div>
+						<div style="text-align: center">
+							<p id="note" style="">SubTitles</p>
+						</div>
+					</div>
+					<div class="col-xs-6" id="transcript">
+						<h4>Video Transcript</h4>
+						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA">
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<script src="./SubYoutube_files/jquery.min.js"></script>
-<script src="./SubYoutube_files/urlObject.js"></script>
-<!-- <script src="./SubYoutube_files/youtube.js"></script> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./views/SubYoutube_files/jquery.min.js"></script>
+	<script src="./views/SubYoutube_files/urlObject.js"></script>
+	<!-- <script src="./views/SubYoutube_files/youtube.js"></script> -->
 
-<script>
-	
-	var urlx = window.location.href;
-	var keyx = urlx.split("?v=")[1];	
-
-	$(".iframe").attr("id",keyx);
-	
-	var newlinkx = "https://www.youtube.com/embed/"+keyx+"?enablejsapi=1"; 
-	$(".iframe").attr("src",newlinkx);
+	<script>
 	
     var page_url = urlObject(window.location.href);
     ytvid = page_url.parameters.v || "Ux1iQBU09oA";
@@ -108,7 +111,7 @@
     });
 </script>
 
-<script>
+	<script>
     this.mmooc=this.mmooc||{};
 
     //https://medium.com/@pointbmusic/youtube-api-checklist-c195e9abaff1
@@ -356,6 +359,7 @@
             this.getTranscript = function()
             {
                 var oTranscript = this;
+                console.log(href);
                 $.ajax({
                     url: href,
                     type: 'GET',
@@ -426,12 +430,16 @@
             });
             $(document).on('click', '.clicknote', function(e) {
                 e.stopPropagation();
-                //console.log($(this).parent().parent().attr("id"));
                 var transcript = mmooc.youtube.getTranscriptFromTranscriptId($(this).parent().parent().parent().attr("id"));
-                //console.log(transcript.player);
+                
+                //transcript.player.playVideo();
+                var seekToTime = $(this).data('seek');
+                //transcript.player.playVideo();
+                transcript.player.seekTo(seekToTime, true);// nhảy time video lại chỗ ghi chú
                 transcript.player.pauseVideo();
                 var pos = $(this).data('position');
-                alert(src[pos].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&"));
+                document.getElementById('note').innerHTML = src[pos].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+                //alert(src[pos].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&"));
             });
         });
 
@@ -514,5 +522,23 @@
 
 
 </script>
+	<script type="text/javascript">
+		$("#getsub").click(function() {
+			var url = $("input[name='getsub']").val();
+			var key = url.split("?v=")[1];
+			var key2 = key.split("&")[0];
+			console.log(key2);
+			window.location.href = "getsub?v=" + key2;
+		})
 
-</body></html>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		}
+</script>
+
+</body>
+</html>

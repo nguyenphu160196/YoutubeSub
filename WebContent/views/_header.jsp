@@ -5,7 +5,7 @@
 			English Subtitles 
 		</div>
 		<div class="col-md-2" style="display: flex">
-			<div class="btn btn-warning" style="margin-right: 20px">Đăng nhập</div>
+			<!-- <div class="btn btn-warning" style="margin-right: 20px">Đăng nhập</div> -->
 			<div class="g-signin2" data-onsuccess="onSignIn"></div>
 		</div>
 	</div>
