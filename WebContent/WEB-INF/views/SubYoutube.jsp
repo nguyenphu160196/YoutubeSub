@@ -226,7 +226,7 @@
                 
                 captionTimeout = setTimeout(function() {
                     transcript.highlightCaptionAndPrepareForNext();
-                }, timeoutValue*1000)
+                }, timeoutValue*1000);
             }
 
             var getStartTimeFromCaption = function(i)
@@ -525,25 +525,10 @@
 			console.log(key2);
 			window.location.href = "getsub?v=" + key2;
 		})
-		$("#logout").click(function(){
-			//console.log(window.location.href);
-			$.post("LogoutServlet").done(function(){
-				document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue="+window.location.href+"getsub?v="+page_url.parameters.v;
-				//window.location.href="getsub?v="+page_url.parameters.v;
-			}); 
-		});
+		
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
-			var user = {
-				id : profile.getId(),
-				name: profile.getName(),
-				picture: profile.getImageUrl(),
-				email: profile.getEmail()
-			};
-			$.post("login", user).done(function(res){
-					//window.location.href="getsub?v="+page_url.parameters.v;
-				document.getElementById("userinfo").innerHTML = res;
-			});
+			
 			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 			console.log('Name: ' + profile.getName());
 			console.log('Image URL: ' + profile.getImageUrl());

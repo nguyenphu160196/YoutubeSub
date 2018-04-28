@@ -18,57 +18,53 @@ import getsubyoutube.beans.UserAccount;
 import getsubyoutube.utils.DBUtils;
 import getsubyoutube.utils.MyUtils;
 
-
-@WebFilter(filterName = "cookieFilter", urlPatterns = { "/*" })
+@WebFilter(filterName = "cookieFilter", urlPatterns = { "/runCookie" })
 public class CookieFilter implements Filter {
 
+	public CookieFilter() {
 
-    public CookieFilter() {
-
-    }
-
+	}
 
 	public void destroy() {
 
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
+
 		System.out.println("Cookie Filter");
-		
+
 		HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession();
- 
-        UserAccount userInSession = MyUtils.getLoginedUser(session);
-        
-        if (userInSession != null) {
-            session.setAttribute("COOKIE_CHECKED", "CHECKED");
-            chain.doFilter(request, response);
-            return;
-        }
- 
+		HttpSession session = req.getSession();
 
-        Connection conn = MyUtils.getStoredConnection(request);
- 
+		UserAccount userInSession = MyUtils.getLoginedUser(session);
 
-        String checked = (String) session.getAttribute("COOKIE_CHECKED");
-        if (checked == null && conn != null) {
-            String Email = MyUtils.getUserNameInCookie(req);
-            try {
-                UserAccount user = DBUtils.findUser(conn, Email);
-                MyUtils.storeLoginedUser(session, user);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+		if (userInSession != null) {
+			session.setAttribute("COOKIE_CHECKED", "CHECKED");
+			chain.doFilter(request, response);
+			return;
+		}
 
-            session.setAttribute("COOKIE_CHECKED", "CHECKED");
-        }
- 
-        chain.doFilter(request, response);
+		Connection conn = MyUtils.getStoredConnection(request);
+
+		String checked = (String) session.getAttribute("COOKIE_CHECKED");
+		if (checked == null && conn != null) {
+			String Email = MyUtils.getUserNameInCookie(req);
+			try {
+				UserAccount user = DBUtils.findUser(conn, Email);
+				MyUtils.storeLoginedUser(session, user);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			session.setAttribute("COOKIE_CHECKED", "CHECKED");
+		}
+
+		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+
 	}
 
 }

@@ -12,33 +12,7 @@
 		</div>
 	</div>
 	<div class="col-md-2" style="display: flex" id="userinfo">
-		<%
-			if (session.getAttribute("user") == null) {
-		%>
-		<!-- <div class="btn btn-warning" style="margin-right: 20px">Đăng ký</div> -->
 		<div class="g-signin2" data-onsuccess="onSignIn" id="login">Đăng
 			nhập</div>
-		<%
-			} else {
-				UserAccount user = new UserAccount();
-				user = (UserAccount) session.getAttribute("user");
-		%>
-		Hi,
-		<%=user.getName()%>
-		<div class="dropdown">
-			<div class="dropdown-toggle" style="margin-left: 10px"
-				data-toggle="dropdown">
-				<img style="border-radius: 50%; width: 30px"
-					src="<%=user.getPicture()%>" alt="Avatar"> <span
-					class="caret"></span>
-			</div>
-			<ul class="dropdown-menu dropdown-menu-right">
-				<li><a href="#">List of lesson</a></li>
-				<li><a href="#" id="logout">Logout</a></li>
-			</ul>
-		</div>
-		<%
-			}
-		%>
 	</div>
 </div>
