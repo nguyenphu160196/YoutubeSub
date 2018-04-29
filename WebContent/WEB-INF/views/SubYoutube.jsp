@@ -10,12 +10,9 @@
 <link href="./JS&CSS/css.css" rel="stylesheet">
 <link rel="stylesheet" media="all"
 	href="./JS&CSS/InstructureIcons-Solid.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" id="www-widgetapi-script"
@@ -32,13 +29,22 @@
 		rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1));
 	font-weight: 600;
 }
+.dropdown-menu a {
+	width: 350px;
+	height: 27px;
+}
+
+.dropdown-menu li {
+	width: 350px;
+	height: 27px;
+}
 </style>
 </head>
 <body>
 	<div class="container-fluid"
 		style="padding: 0px !important;; margin: 0px !important;">
 
-		<jsp:include page="_header_get.jsp"></jsp:include>
+		<jsp:include page="_header.jsp"></jsp:include>
 
 		<div class="ic-Layout-contentMain" style="margin-top: 70px;">
 			<div class="content-box" id="top_area">
