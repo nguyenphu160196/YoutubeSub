@@ -9,25 +9,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import getsubyoutube.utils.MyUtils;
 
-
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LogoutServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public LogoutServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.getSession().invalidate();
 		MyUtils.deleteUserCookie(response);
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);
 	}

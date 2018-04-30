@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@page import="getsubyoutube.utils.*"%>
 <!DOCTYPE html>
 <!-- saved from url=(0073)https://academicapps.temple.edu/youtubeIT/ytitexample2.html?v=xianU0IrxEk -->
 <html>
@@ -10,13 +12,18 @@
 <link href="./JS&CSS/css.css" rel="stylesheet">
 <link rel="stylesheet" media="all"
 	href="./JS&CSS/InstructureIcons-Solid.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" id="www-widgetapi-script"
-	src="./JS&CSS/SubYoutube_files/www-widgetapi.js" async=""></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<script type="text/javascript" src="./ckeditor/ckeditor.js"> </script>
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id"
@@ -29,22 +36,13 @@
 		rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1));
 	font-weight: 600;
 }
-.dropdown-menu a {
-	width: 350px;
-	height: 27px;
-}
-
-.dropdown-menu li {
-	width: 350px;
-	height: 27px;
-}
 </style>
 </head>
 <body>
 	<div class="container-fluid"
 		style="padding: 0px !important;; margin: 0px !important;">
 
-		<jsp:include page="_header.jsp"></jsp:include>
+		<jsp:include page="_header_get.jsp"></jsp:include>
 
 		<div class="ic-Layout-contentMain" style="margin-top: 70px;">
 			<div class="content-box" id="top_area">
@@ -54,12 +52,40 @@
 							<iframe class="iframe" id="" src="" width="560" height="400"
 								allow="autoplay" allowfullscreen="true" __idm_id__="1016238081"></iframe>
 						</div>
-						<div style="text-align: center">
-							<p id="note" style="">SubTitles</p>
+						<div style="text-align: center; border-style: double">
+							<p id="note" style="margin-top: 7px">Subtitle will be shown
+								here!</p>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-sm-9">
+								<div style="font-size: 18px;">
+									<strong>USER NOTES</strong>
+								</div>
+							</div>
+							<!-- <div class="col-sm-3">
+								<button data-target="#insertnote" data-toggle="modal"
+									class="btn btn-danger fa fa-edit" id="editnote"
+									style="font-size: 16px;"> Edit note</button>
+							</div> -->
+						</div>
+						<div
+							style="height: 180px; border-style: double; overflow-y: scroll;"
+							id="note">
+							<div id="note_content" style="margin-left: 10px;"></div>
 						</div>
 					</div>
 					<div class="col-xs-6" id="transcript">
-						<h4>Video Transcript</h4>
+						<div class="row">
+							<div class="col-sm-9">
+								<h4>Video Transcript</h4>
+							</div>
+							<div class="col-sm-3">
+								<button data-target="#titlelesson" data-toggle="modal"
+								 class="btn btn-primary fa fa-save"
+									style="font-size: 16px;" id="savelesson"> Save to
+									lesson</button>
+							</div>
+						</div>
 						<div class="mmocVideoTranscript" id="videoTranscriptUx1iQBU09oA"
 							style="border-style: groove;"></div>
 					</div>
@@ -67,15 +93,83 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal" id="insertnote" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"> Add note</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-12 col-sm-12">
+									<textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div class="row">
+						<button id="add" class="col-md-2 btn btn-primary"
+							style="margin-left: 120px;" data-dismiss="modal">Add</button>
+						<button class="col-md-2 btn btn-primary"
+							style="margin-left: 300px" id="cancle" data-dismiss="modal">Cancle</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="titlelesson" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add title for lesson</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+						  <input type="text" class="form-control" id="title_lesson">
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div class="row">
+						<button id="add_lesson" class="col-md-2 btn btn-primary"
+							style="margin-left: 50px;" data-dismiss="modal">Save lesson</button>
+						<button class="col-md-2 btn btn-primary"
+							style="margin-left: 300px" id="cancle" data-dismiss="modal">Cancle</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<script src="./JS&CSS/jquery.min.js"></script>
 	<script src="./JS&CSS/urlObject.js"></script>
 
 	<script>
+	//1 số biến toàn cục
+	var pos;
+	var idvideo;
+	var arrnote;
+	var idtranscript;
 	
     var page_url = urlObject(window.location.href);
     ytvid = page_url.parameters.v || "Ux1iQBU09oA";
     lang = page_url.parameters.lang || "en";
     vname = page_url.parameters.name || "";
+    
+    idvideo = page_url.parameters.v;
 
     // change src video iframe
     var video_frame = $('.iframe')
@@ -90,7 +184,7 @@
         .attr("id", "videoTranscript" + ytvid)
         .data('language', lang)
         .data('name', vname);
-
+    idtranscript = "videoTranscript" + ytvid;
 
     // $("#youTubeVideo").append(video_frame);
     //$("#transcript").append(transcript_div);
@@ -287,6 +381,21 @@
                     }else{//scroll ontop
                         $('html, .mmocVideoTranscript').animate({ scrollTop: 0}, 50);
                     }
+                    //getStartTimeFromCaption(currentCaptionIndex)=>time
+                    
+               		pos = currentCaptionIndex;
+                	// chạy ghi chú theo sub
+                    for(var i = 0; i < arrnote.length; i++){
+                    	if(arrnote[i].pos == currentCaptionIndex){
+                			//document.getElementById("editnote").disabled = false;
+                    		$("#note_content").html(arrnote[i].content);
+                    		break;
+                    	}
+                    	else{
+                			//document.getElementById("editnote").disabled = true;
+                    		$("#note_content").html("");
+                    	}
+                    }
                     document.getElementById('note').innerHTML = src[currentCaptionIndex].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
                 }
             }
@@ -318,6 +427,19 @@
                 }else{// scroll ontop
                     $('html, .mmocVideoTranscript').animate({ scrollTop: 0}, 50);
                 }
+                pos = currentCaptionIndex;
+                // chạy ghi chú theo sub
+                for(var i = 0; i < arrnote.length; i++){
+                	if(arrnote[i].pos == currentCaptionIndex){
+            			//document.getElementById("editnote").disabled = false;
+                		$("#note_content").html(arrnote[i].content);
+                		break;
+                	}
+                	else{
+            			//document.getElementById("editnote").disabled = true;
+                		$("#note_content").html("");
+                	}
+                }
                 document.getElementById('note').innerHTML = src[currentCaptionIndex].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
             }   
 
@@ -336,7 +458,7 @@
                     srt_output += 
                     '<div class="grid-row" style=" height: 45px">'+
                         '<div class="col-sm-2">'+
-                            '<button class="clicknote btn btn-primary fa fa-edit" data-position="'+ i +'" data-seek="'+ start +'">Note</button>'+
+                            '<button data-target="#insertnote" data-toggle="modal" class="clicknote btn btn-primary fa fa-edit" data-position="'+ i +'" data-seek="'+ start +'"> Note</button>'+
                         '</div>'+
                         '<div class="col-sm-10">'+
                             '<div class="btnSeek" data-seek="'+ start +'" id="'+ timestampId +'"><strong>'+ makeTimeline(start) +' - </strong>'+ captionText +'</div>'+
@@ -429,16 +551,43 @@
                 transcript.player.seekTo(seekToTime, true);
                 transcript.player.playVideo();
             });
-            $(document).on('click', '.clicknote', function(e) {
-                e.stopPropagation();
+            $(document).on('click', '.clicknote', function() {
+				// kiểm tra đăng nhập chưa?
+                if(emailuser == null || emailuser == 'null'){
+                	alert('Please login!');
+                	$("#cancle").click();
+                	return false;
+                }
+				
+				// kiểm tra đã lưu bài học chưa?
+                var isSave = document.getElementById("savelesson").disabled;
+                if(!isSave){
+                	$("#cancle").click();
+                	alert('Please save lesson before start note! Please click button Save to lesson!');
+                	return false;
+                }
                 var transcript = mmooc.youtube.getTranscriptFromTranscriptId($(this).parent().parent().parent().attr("id"));
-                
                 //transcript.player.playVideo();
                 var seekToTime = $(this).data('seek');
                 //transcript.player.playVideo();
                 transcript.player.seekTo(seekToTime, true);// nhảy time video lại chỗ ghi chú
                 transcript.player.pauseVideo();
-                var pos = $(this).data('position');
+                pos = $(this).data('position');
+                for(var i = 0; i < arrnote.length; i++){
+                	if(arrnote[i].pos == pos){
+                		$("#add").html('Update');
+            			//document.getElementById("editnote").disabled = false;
+                		$("#note_content").html(arrnote[i].content);
+                		CKEDITOR.instances.editor1.setData(arrnote[i].content);
+                		break;
+                	}
+                	else{
+                		$("#add").html('Add');
+                		$("#note_content").html("");
+            			//document.getElementById("editnote").disabled = true;
+						CKEDITOR.instances.editor1.setData("");
+                	}
+                }
                 document.getElementById('note').innerHTML = src[pos].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
                 //alert(src[pos].textContent.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&#39;/g, "'").replace(/&amp;/g, "&"));
             });
@@ -530,16 +679,134 @@
 			var key2 = key.split("&")[0];
 			console.log(key2);
 			window.location.href = "getsub?v=" + key2;
-		})
-		
-		function onSignIn(googleUser) {
-			var profile = googleUser.getBasicProfile();
+		});
+		$("#savelesson").click(function(){
+			if(emailuser.length == 0 || emailuser == null){
+				alert('Please login!');
+				return false;
+			}
+		});
+		$("#add_lesson").click(function(e){
+			var linkimg = 'https://img.youtube.com/vi/'+idvideo+'/0.jpg';
+			var title = $('#title_lesson').val();
+			if(title.length == 0){
+				alert("Please enter title!");
+				return false;
+			}
+			console.log(emailuser);
+			var lesson = {
+					email: emailuser,
+					title: title,
+					idvideo: idvideo,
+					linkimg: linkimg
+			}
 			
+			//post dữ liệu để lưu lesson
+			$.post("savelesson", lesson).done(function(res){
+				if(res == "ok"){
+					$('#title_lesson').val('');
+					alert('Save success!');
+					document.getElementById("savelesson").disabled = true;
+				}else{
+					alert('Please try again!');	
+				}
+			});
+		});
+		
+		$("#add").click(function(e){
+			e.preventDefault();
+			var text = CKEDITOR.instances.editor1.getData();
+			if(text.length == 0){
+				alert("Please enter note!");
+				return false;
+			}
+			var note = {
+					pos: pos,
+					content: text,
+					email: emailuser,
+					idvideo: idvideo
+			};
+			$.post("addnote", note).done(function(res){
+				if(res == 'ok'){
+        			//document.getElementById("editnote").disabled = false;
+					$("#note_content").html(text);
+					CKEDITOR.instances['editor1'].setData("");
+					//reset lại mảng chứa ghi chú
+					var post = {
+							idvideo: idvideo,
+							email: emailuser
+					};
+					//get note arr
+					$.post("getnote", post).done(function(res){
+						console.log(res);
+						arrnote = JSON.parse(res);
+					});
+				}else{
+					alert('Add or Edit note fail! Please try again!');
+				}
+			});
+		});
+		/* $("#editnote").click(function(e){
+			e.preventDefault();
+			var transcript = mmooc.youtube.getTranscriptFromTranscriptId(idtranscript);
+            transcript.player.pauseVideo();// dừng video để chỉnh sửa
+			$("#add").html('Update');
+			var text = document.getElementById("note_content").innerHTML;
+			CKEDITOR.instances.editor1.setData(text);
+		}); */
+		
+		/* function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
 			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 			console.log('Name: ' + profile.getName());
 			console.log('Image URL: ' + profile.getImageUrl());
 			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		}
+		} */
+		
+		//ckeditor
+		CKEDITOR.replace('editor1');
+
+		$(document).ready(function(){
+			// vì hàm này chạy trước nên các biến toàn cục sẽ không hiểu vì thế get email bằng cách lấy cookie
+			<%
+				String cookie = MyUtils.getUserNameInCookie(request);
+					
+			%>
+			var post = {
+					idvideo: idvideo,
+					email: '<%=cookie%>'
+			};
+			//get note arr
+			$.post("getnote", post).done(function(res){
+				console.log(res);
+				arrnote = JSON.parse(res);
+			});
+			//check lesson isSave
+			var lesson = {
+					email: '<%=cookie%>',
+					idvideo: idvideo
+			};
+			$.post("checksavelesson", lesson).done(function(res){
+				console.log(res);
+				if(res == "ok"){
+					document.getElementById("savelesson").disabled = true;//ẩn nút save nếu đã lưu bài trước đó
+				}else{
+					document.getElementById("savelesson").disabled = false;// hiện nút save nếu chưa lưu
+				}
+			});
+			/* $.fn.modal.Constructor.prototype.enforceFocus = function () {
+			    modal_this = this
+			    $(document).on('focusin.modal', function (e) {
+			        if (modal_this.$element[0] !== e.target && !modal_this.$element.has(e.target).length
+			        // add whatever conditions you need here:
+			        &&
+			        !$(e.target.parentNode).hasClass('cke_dialog_ui_input_select') && !$(e.target.parentNode).hasClass('cke_dialog_ui_input_text')) {
+			            modal_this.$element.focus()
+			        }
+			    })
+			}; */
+
+		});
 </script>
 
 </body>
